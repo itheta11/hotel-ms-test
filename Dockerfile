@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /app
 
 # Copy the project file(s) and restore dependencies
-COPY *.csproj .
+COPY ./KamathResidency.csproj .
 RUN dotnet restore
 
 # Copy the rest of the application files and build the app
