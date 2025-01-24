@@ -9,7 +9,7 @@ WORKDIR /src
 COPY ["KamathResidency/KamathResidency.csproj", "KamathResidency/"]
 RUN dotnet restore "KamathResidency/KamathResidency.csproj"
 COPY . .
-WORKDIR "/src/KamathResidency"
+WORKDIR "/KamathResidency"
 RUN dotnet build "KamathResidency.csproj" -c Release -o /app/build
 
 FROM build AS publish
