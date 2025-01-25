@@ -19,7 +19,7 @@ RUN dotnet publish "./KamathResidency.csproj" -c $BUILD_CONFIGURATION -o /app/pu
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY ["Database/KamathResidency.db", "/app/Database/KamathResidency.db"]
+COPY ["KamathResidency/Database/KamathResidency.db", "/app/Database/KamathResidency.db"]
 RUN mkdir -p /app/Database && chmod -R 777 /app/Database
 
 ENTRYPOINT ["dotnet", "KamathResidency.dll"]
