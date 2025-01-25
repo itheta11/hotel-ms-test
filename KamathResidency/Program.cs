@@ -21,6 +21,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
+/// check if db exists
+var dbPath = Path.Combine(builder.Environment.ContentRootPath, "Database", "KamathResidency.db");
+if (!File.Exists(dbPath))
+{
+    throw new Exception("db not found");
+}
 builder.Services.AddDbContext<KamahResidencyContext>(options => options.UseSqlite(config.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IBookingRepo, BookingRepo>();
 
