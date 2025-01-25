@@ -25,7 +25,7 @@ builder.Services.AddControllers();
 var dbPath = Path.Combine(builder.Environment.ContentRootPath, "Database", "KamathResidency.db");
 if (!File.Exists(dbPath))
 {
-    throw new Exception("db not found at " + dbPath);
+    File.Create(dbPath);
 }
 builder.Services.AddDbContext<KamahResidencyContext>(options => options.UseSqlite(config.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IBookingRepo, BookingRepo>();
